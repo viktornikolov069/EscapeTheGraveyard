@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: barichello/godot-ci:4.2.1
+        image: barichello/godot-ci:4.2.1-headless # Ensure this image exists or is correctly named
 
     steps:
       - name: Checkout
@@ -37,7 +37,7 @@ jobs:
         run: mkdir -v -p build/web
 
       - name: Build and export game
-        run: godot -v --export-release "HTML5" ../build/web/index.html escape_the_graveyard/project.godot
+        run: godot -v --export-release "HTML5" ../build/web/index.html escape_the_graveyard/project.godot --rendering-driver opengl3
         shell: sh -e {0}
         env:
           GODOT_VERSION: 4.2.1

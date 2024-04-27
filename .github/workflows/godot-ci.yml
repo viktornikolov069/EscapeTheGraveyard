@@ -36,8 +36,12 @@ jobs:
       - name: Create staging directory
         run: mkdir -v -p build/web
 
-      - name: Build
-        run: godot -v --export "HTML5" ../build/web/index.html escape_the_graveyard/project.godot
+      - name: Build and export game
+        run: godot -v --export-release "HTML5" ../build/web/index.html escape_the_graveyard/project.godot
+        shell: sh -e {0}
+        env:
+          GODOT_VERSION: 4.2.1
+      
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

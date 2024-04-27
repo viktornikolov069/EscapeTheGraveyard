@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://dt3fo3fwl0qba"]
+
+[ext_resource type="Script" path="res://scenes/skeleton/skeleton.gd" id="1_ckiab"]
+[ext_resource type="Texture2D" uid="uid://butvsyavcgfwi" path="res://assets/skeleton/skeletons.png" id="1_v5chl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fjks"]
+atlas = ExtResource("1_v5chl")
+region = Rect2(528, 0, 132, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogqo3"]
+atlas = ExtResource("1_v5chl")
+region = Rect2(132, 188, 132, 188)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_becax"]
+atlas = ExtResource("1_v5chl")
+region = Rect2(533, 0, 128, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_elfxm"]
+atlas = ExtResource("1_v5chl")
+region = Rect2(148, 189, 125, 166)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vfoj"]
+atlas = ExtResource("1_v5chl")
+region = Rect2(275, 189, 125, 166)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l02uq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fjks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogqo3")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_becax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_elfxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vfoj")
+}],
+"loop": true,
+"name": &"run",
+"speed": 11.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4mh0"]
+size = Vector2(20, 35)
+
+[node name="Skeleton" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_ckiab")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_l02uq")
+animation = &"run"
+autoplay = "run"
+frame = 2
+frame_progress = 0.966654
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 6)
+shape = SubResource("RectangleShape2D_k4mh0")

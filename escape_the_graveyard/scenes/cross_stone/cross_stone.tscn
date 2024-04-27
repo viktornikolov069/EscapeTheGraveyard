@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://5knblepcgv67"]
+
+[ext_resource type="Texture2D" uid="uid://br8nolhfeg1tv" path="res://assets/gravestones/gravestone.png" id="1_1tjo8"]
+[ext_resource type="Script" path="res://scenes/cross_stone/cross_stone.gd" id="1_rxtgq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckt16"]
+size = Vector2(179, 243)
+
+[node name="CrossStone" type="Area2D"]
+script = ExtResource("1_rxtgq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1tjo8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.5, -0.5)
+shape = SubResource("RectangleShape2D_ckt16")

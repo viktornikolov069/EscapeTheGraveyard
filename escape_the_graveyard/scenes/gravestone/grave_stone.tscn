@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0wf7fbjl13s5"]
+
+[ext_resource type="Texture2D" uid="uid://b5qlt6l2r8hd" path="res://assets/gravestones/crossstone.png" id="1_erk84"]
+[ext_resource type="Script" path="res://scenes/gravestone/grave_stone.gd" id="1_yehyx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p45pj"]
+size = Vector2(19.5398, 62.2675)
+
+[node name="GraveStone" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_yehyx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_erk84")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 6)
+scale = Vector2(1.53533, 1.05994)
+shape = SubResource("RectangleShape2D_p45pj")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(5.00003, 6)
+scale = Vector2(1.85873, 1.6703)
+
+[connection signal="body_entered" from="." to="." method="_on_stone_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

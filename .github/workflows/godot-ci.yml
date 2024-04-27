@@ -23,13 +23,9 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-        image: barichello/godot-ci:4.2.1-headless # Ensure this image exists or is correctly named
+        image: barichello/godot-ci:4.2.1 # Ensure this image exists or is correctly named
 
     steps:
-      - name: Install Godot Headless
-        run: |
-            wget https://downloads.tuxfamily.org/godotengine/4.2.1/Godot_v4.2.1-stable_linux_headless.64.zip
-            unzip Godot_v4.2.1-stable_linux_headless.64.zip
         
       - name: Checkout
         uses: actions/checkout@v2
